@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-python main.py "$@"
+accelerate launch -m lm_eval "$@"
