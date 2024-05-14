@@ -1,0 +1,5 @@
+group: sea_eval_zeroshot
+dataset_path: SeaEval/SeaEval_datasets
+training_split: null
+validation_split: null
+test_split: test
