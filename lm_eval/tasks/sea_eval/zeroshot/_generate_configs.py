@@ -27,8 +27,7 @@ yaml.add_representer(Function, function_representer)
 
 def main():
     dataset_name = "sea_eval"
-    #  tasks = ["sg_eval"]
-    tasks = ["flores_ind2eng"]
+    tasks = ["flores_ind2eng", "sg_eval"]
     for task in tqdm(tasks):
         for i in range(5):
             with open(CWD / f"{task}_prompt_{i}.yaml", "w") as outfile:
