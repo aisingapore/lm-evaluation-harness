@@ -1,0 +1,11 @@
+include: _zeroshot_template_yaml
+group:
+  - sea_eval_zeroshot_cross_mmlu
+dataset_name: cross_mmlu
+doc_to_text: "query"
+doc_to_target: "align_target"
+
+num_fewshot: 0
+output_type: generate_until
+metadata:
+  version: 1.0

@@ -1,0 +1,15 @@
+from dataclasses import dataclass
+from typing import List
+
+
+{% for metric in metrics %}
+def ac3_{{ metric["fn_name"] }}(**kwargs):
+    return AC3Input(**kwargs)
+{% endfor %}
+
+
+@dataclass
+class AC3Input:
+    predictions: List[str]
+    references: List[str]
+    key: str
