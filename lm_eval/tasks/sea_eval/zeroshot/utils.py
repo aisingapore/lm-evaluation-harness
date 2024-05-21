@@ -2,7 +2,6 @@ import collections
 import pickle
 import random
 from dataclasses import dataclass
-from pathlib import Path
 from typing import List
 
 import tiger_eval
@@ -49,8 +48,6 @@ def tiger_eval_cross_lingual_assessment(items):
             "model_prediction": item.predictions[0],
         }
     arr = list(data_with_model_prediction.values())
-    with open(Path(__file__).resolve().parents[4] / "pred.pkl", "wb") as outfile:
-        pickle.dump(arr, outfile)
     # Heuristic align randomizes when nothing can be aligned. Make it reproducible
     random.seed(1234)
     result = tiger_eval.cross_lingual_assessment.score(arr)
