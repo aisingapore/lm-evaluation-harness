@@ -1,0 +1,5 @@
+dataset_kwargs: null
+validation_split: null
+test_split: test
+doc_to_choice: ['A', 'B', 'C', 'D']
+output_type: multiple_choice
