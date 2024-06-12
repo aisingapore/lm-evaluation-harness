@@ -1,6 +1,7 @@
 import random
 
 import datasets
+from typing import List
 
 def preprocess_text(doc):
      # "objektif: {{objektif}}\nsoalan: {{soalan}}?\njawapan:\n"
@@ -8,6 +9,9 @@ def preprocess_text(doc):
 
 def doc_to_target(doc):
     return doc['jawapan']
+
+def most_common(l:List) -> str:
+    return max(set(l), key=l.count)
 
 def _process_wrapper(dataset: datasets.Dataset, num_fewshots:int):
     arange = set(range(len(dataset)))
@@ -26,6 +30,21 @@ def _process_wrapper(dataset: datasets.Dataset, num_fewshots:int):
     
     return dataset.map(_process_doc)
 
+def process_results(doc:datasets.Dataset, results:List[str]):
+    gold = doc_to_target(doc)
+    print(f"{results=}")
+    result = results[0]
+    result = result.split('jawapan:')[-1].strip().split()
+    print(f"{gold=}, {result=}")
+    try:
+        result = result[0].replace('.', '').replace('</s>', '').split('\\')[0].split('/')[0]
+    except IndexError:
+        result = ''
+    acc = int(result == gold)
+    result_dict = {
+                **({"acc": acc}),
+    }
+    return result_dict
 def one_shot(dataset: datasets.Dataset):
     return _process_wrapper(dataset, 1)
 

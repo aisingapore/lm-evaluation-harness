@@ -2,3 +2,25 @@ include: _default_bm_pt3.yaml
 task: malaya_bm_pt3_0shot
 doc_to_text: "objektif: {{objektif}}\nsoalan: {{soalan}}?\njawapan:\n"
 doc_to_target: jawapan
+output_type: generate_until
+process_results: !function utils.process_results
+repeats: 5
+generation_kwargs:
+  max_new_tokens: 3
+  top_p: 0.95
+  top_k: 50
+  temperature: 0.5
+  do_sample: true
+  num_beams: 1
+  repetition_penalty: 1.05
+  max_length: null
+metric_list:
+ - metric: acc
+   aggregation: mean
+   higher_is_better: true
+filter_list:
+  - name: "maj@8" # get Maj@8 , via selecting the first 8 responses. Using a better estimator would be optimal.
+    filter:
+      - function: "take_first_k"
+        k: 5
+      - function: "majority_vote"

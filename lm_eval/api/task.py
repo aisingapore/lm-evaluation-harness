@@ -1033,6 +1033,7 @@ class ConfigurableTask(Task):
         )
 
     def process_results(self, doc, results):
+        
         if callable(self.config.process_results):
             return self.config.process_results(doc, results)
 
@@ -1140,6 +1141,7 @@ class ConfigurableTask(Task):
         elif self.OUTPUT_TYPE == "generate_until":
             gold = self.doc_to_target(doc)
             result = results[0]
+            print(f"{gold=}{result=}")
             if self.config.doc_to_choice is not None:
                 # If you set doc_to_choice,
                 # it assumes that doc_to_target returns a number.
