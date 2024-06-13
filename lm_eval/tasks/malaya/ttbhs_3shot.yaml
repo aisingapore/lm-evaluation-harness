@@ -1,3 +1,4 @@
 include: _default_ttbhs.yaml
 task: malaya_ttbhs_3shot
 process_docs: !function utils.three_shot
+doc_to_text: prompt
