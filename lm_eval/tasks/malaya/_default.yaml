@@ -11,7 +11,7 @@ generation_kwargs:
   top_p: 0.95
   top_k: 50
   temperature: 0.5
-  do_sample: false
+  do_sample: true
   num_beams: 1
   repetition_penalty: 1.05
   max_length: null
