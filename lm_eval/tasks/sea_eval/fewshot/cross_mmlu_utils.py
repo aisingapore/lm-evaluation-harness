@@ -4,65 +4,61 @@ import random
 
 import datasets
 
-
 LANGS = ['Chinese', 'Indonesian', 'Spanish', 'Vietnamese', 'Malay', 'English', 'Filipino']
 FEWSHOT_PROMPT = "Question:\n{}\n\nChoices:\n{}\n\nAnswer:\n{}\n\n"
 QUERY_PROMPT = "Question:\n{}\n\nChoices:\n{}\n\nAnswer:\n"
 
-def _process_doc(doc):
-    # Merges a list of list in a zig-zag fashion, e.g.,
-    # [[a1, a2], [b1, b2], [c1, c2]] -> [a1, b1, c1, a2, b2, c2]
-    def _zig_zag_merge(arr):
-        return list(itertools.chain(*list(zip(*arr))))
 
-    ids = []
+def _process_doc(doc):
+    n = len(next(v for v in doc.values()))
+
+    raw_data = []
+    for i in range(n):
+        raw_data.append({key: doc[key][i] for key in doc})
+
+    all_samples = []
+    for sample_set in raw_data:
+        for key in sample_set:
+            if key == 'id':
+                continue
+            all_samples.append(sample_set[key])
+
     queries = []
     targets = []
-    n = len(doc["id"])
-    past_indices = []
     random.seed(1234)
-    for lang in LANGS:
-        lang_ids = []
-        lang_queries = []
-        lang_targets = []
-        for i, sample in enumerate(doc[lang]):
-            if i == len(past_indices):
-                indices = random.sample(range(n), 6)
-                past_indices.append(indices)
-            else:
-                indices = past_indices[i]
-            lang_ids.append(f"{lang}_{doc['id'][i]}")
+    for sample_set in raw_data:
+        for key in sample_set:
+            if key == 'id':
+                continue
+
+            five_plus_one_samples = random.sample(all_samples, 6)
+
             count = 0
             query = ""
-            for idx in indices:
-                if doc[lang][idx]["question"] != sample["question"]:
+            for sample in five_plus_one_samples:
+                # Filter out the sample with the same context
+                if sample['question'] != sample_set[key]['question']:
                     query += FEWSHOT_PROMPT.format(
-                        doc[lang][idx]["question"],
-                        "\n".join(doc[lang][idx]["choices"]),
-                        doc[lang][idx]["answer"],
+                        sample["question"], "\n".join(sample["choices"]), sample["answer"]
                     )
                     count += 1
                 if count == 5:
-                    break;
-            query += QUERY_PROMPT.format(sample["question"], "\n".join(sample["choices"]))
-            lang_queries.append(query)
-            #  lang_queries.append(
-            #      prompt.format(sample["question"], "\n".join(sample["choices"]))
-            #  )
-            lang_targets.append(
+                    break
+
+            query += QUERY_PROMPT.format(
+                sample_set[key]['question'], "\n".join(sample_set[key]['choices'])
+            )
+            queries.append(query)
+            targets.append(
                 "{}\n{}\n{}\n{}".format(
-                    doc['id'][i], lang, "\n".join(sample["choices"]), sample["answer"]
+                    sample_set["id"],
+                    key,
+                    "\n".join(sample_set[key]["choices"]),
+                    sample_set[key]["answer"],
                 )
             )
-        ids.append(lang_ids)
-        queries.append(lang_queries)
-        targets.append(lang_targets)
 
-    ids = _zig_zag_merge(ids)
-    queries = _zig_zag_merge(queries)
-    targets = _zig_zag_merge(targets)
-
-    return {"new_id": ids, "query": queries, "align_target": targets}
+    return {"query": queries, "align_target": targets}
 
 
 def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
