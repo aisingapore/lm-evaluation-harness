@@ -1,3 +1,4 @@
 include: _default_bm_pt3.yaml
 task: malaya_bm_pt3_1shot
 process_docs: !function utils.one_shot
+doc_to_text: prompt

@@ -22,7 +22,7 @@ def _process_wrapper(dataset: datasets.Dataset, num_fewshots:int):
         # sample N other indices
         shots = random.sample(list(arange - {i}), num_fewshots)
         for no, s in enumerate(shots, start = 1):
-            prompts.append(f'Contoh soalan {no}\n{doc_to_text(dataset[s])}{doc_to_target(dataset[s])}')
+            prompts.append(f'Contoh soalan {no}\n{doc_to_text(dataset[s])} {doc_to_target(dataset[s])}')
         
         prompts.append(doc_to_text(doc))
         prompt = '\n\n'.join(prompts)
@@ -47,9 +47,9 @@ def process_results(doc:dict, results: List[List[str]]):
     result_dict = {
                 **({"acc": gold == ans}),
     }
-    to_save['output'] = results[0]
-    to_save['clean'] = r
-    to_save['answer'] = ans
+    to_save['lm_output'] = results[0]
+    to_save['lm_clean'] = r
+    to_save['lm_answer'] = ans
 
     # open('/mnt/fs-arf-01/wayne/results.json', 'w').close()
     with open('/mnt/fs-arf-01/wayne/results.json', 'a') as fopen:
