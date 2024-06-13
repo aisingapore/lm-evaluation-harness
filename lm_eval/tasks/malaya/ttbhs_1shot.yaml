@@ -1,0 +1,3 @@
+include: _default_ttbhs.yaml
+task: malaya_ttbhs_1shot
+process_docs: !function utils.one_shot

@@ -1,5 +1,27 @@
 dataset_kwargs: null
 validation_split: null
 test_split: test
-doc_to_choice: ['A', 'B', 'C', 'D']
-output_type: multiple_choice
+doc_to_text: !function utils.doc_to_text
+doc_to_target: jawapan
+output_type: generate_until
+process_results: !function utils.process_results
+repeats: 5
+generation_kwargs:
+  max_new_tokens: 3
+  top_p: 0.95
+  top_k: 50
+  temperature: 0.5
+  do_sample: false
+  num_beams: 1
+  repetition_penalty: 1.05
+  max_length: null
+metric_list:
+ - metric: acc
+   aggregation: mean
+   higher_is_better: true
+filter_list:
+  - name: "regex" # get Maj@8 , via selecting the first 8 responses. Using a better estimator would be optimal.
+    filter:
+      - function: "regex"
+        # regex_pattern: (?:jawapan:\s*)?([ABCD])
+        regex_pattern: (?s)(.*)

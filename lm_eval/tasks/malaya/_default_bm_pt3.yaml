@@ -1,7 +1,2 @@
 dataset_path: aisingapore/BM-A-PT3
-doc_to_target: jawapan
-doc_to_text: prompt
-dataset_kwargs: null
-validation_split: null
-test_split: test
-output_type: multiple_choice
+include: _default.yaml

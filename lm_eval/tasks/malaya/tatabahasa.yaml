@@ -1,9 +1,0 @@
-include: _default.yaml
-task: malaya_tatabahasa
-dataset_path: aisingapore/tatabahasa
-metric_list:
-  - metric: acc
-    aggregation: mean
-    higher_is_better: true
-metadata:
-  version: 0.0
