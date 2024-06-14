@@ -5,7 +5,6 @@ from typing import List
 
 
 def doc_to_text(doc):
-    # "objektif: {{objektif}}\nsoalan: {{soalan}}?\njawapan:\n"
     return f"objektif: {doc['objektif']}\nsoalan: {doc['soalan']}\njawapan:"
 
 
