@@ -1,0 +1,23 @@
+group:
+  - m3exam
+task: m3exam_zeroshot_vi
+dataset_path: chiayewken/m3exam
+dataset_name: vietnamese
+training_split: null
+validation_split: null
+test_split: test
+
+process_docs: !function m3exam_vi_utils.process_docs
+doc_to_text: "query"
+doc_to_target: "align_target"
+
+metric_list:
+  - metric: acc
+    aggregation: !function m3exam_vi_utils.mean
+num_fewshot: 0
+output_type: generate_until
+generation_kwargs:
+  max_new_tokens: 3
+  until: []
+metadata:
+  version: 1.0
