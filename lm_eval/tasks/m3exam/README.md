@@ -2,31 +2,44 @@
 
 ### Paper
 
-Title: `paper titles goes here`
+Title: `M3Exam: A Multilingual, Multimodal, Multilevel Benchmark for Examining Large Language Models`
 
-Abstract: `link to paper PDF or arXiv abstract goes here`
+Abstract: `https://arxiv.org/abs/2210.09261`
 
-`Short description of paper / benchmark goes here:`
+We introduce M3Exam, a novel benchmark sourced from real and official human exam questions for evaluating LLMs in a multilingual, multimodal, and multilevel context.
 
-Homepage: `homepage to the benchmark's website goes here, if applicable`
+Homepage: `https://github.com/DAMO-NLP-SG/M3Exam`
 
 
 ### Citation
 
 ```
-BibTeX-formatted citation goes here
+@article{zhang2023m3exam,
+      title={M3Exam: A Multilingual, Multimodal, Multilevel Benchmark for Examining Large Language Models},
+      author={Wenxuan Zhang and Sharifah Mahani Aljunied and Chang Gao and Yew Ken Chia and Lidong Bing},
+      year={2023},
+      eprint={2306.05179},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ### Groups and Tasks
 
 #### Groups
 
-* `group_name`: `Short description`
+* `m3exam_zeroshot`
 
 #### Tasks
 
-* `task_name`: `1-sentence description of what this particular task does`
-* `task_name2`: ...
+* `m3exam_zeroshot_vi`: `Vietnamese subset with Vietnamese prompt, corresponds to the "Monolingual" strategy from Table 3.`
+
+### Reproducibility
+
+To reproduce the original implementation's results
+
+* Set `batch_size=1`
+* Ensure `max_new_token=3` and `until=[]` in `generation_kwargs`
 
 ### Checklist
 

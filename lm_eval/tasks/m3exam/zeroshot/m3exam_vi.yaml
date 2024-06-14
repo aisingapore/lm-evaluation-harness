@@ -1,5 +1,5 @@
 group:
-  - m3exam
+  - m3exam_zeroshot
 task: m3exam_zeroshot_vi
 dataset_path: chiayewken/m3exam
 dataset_name: vietnamese
