@@ -1,4 +1,7 @@
 import datasets
+from typing import Iterable, List, Union
+
+from lm_eval.api.filter import Filter
 
 SUBJECT_TO_TARGET = {
     "language": "Tiếng Việt",
@@ -17,7 +20,7 @@ PROMPT = (
 def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     def _process_doc(doc):
         doc["background_description"] = (
-            [] if not doc["background"] else [doc["background"]]
+            [] if not doc["background"] else ["", doc["background"]]
         )
         doc["query"] = PROMPT.format(
             subject=SUBJECT_TO_TARGET[doc["subject_category"]],
@@ -25,29 +28,32 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
             question=doc["question_text"],
             options="\n".join(doc["options"]),
         )
-        doc["align_target"] = doc["answer_text"]
+        # Follow postprocessing in original eval.py implementation
+        doc["align_target"] = doc["answer_text"].strip()
         return doc
 
     return dataset.map(_process_doc)
 
+
 def mean(items):
-    match = 0
-    total = 0
-    errors = []
-    illformats = []
+    return sum(ans == pred for ans, pred in items) / len(items)
 
-    for item in items:
-        answer = item[0].strip()
-        # Postprocess based on main.py
-        res = item[1].split(ANS_KEYWORD)[-1].strip().split()[0]
-        pred = res.strip()
-        if len(pred) > 1:
-            if pred[0] != "(":
-                pred = pred[0]   # Assume answer is A) xxxx
-            else:
-                pred = pred[1]   # Assume answer is (A) xxxx
-        if answer == pred:
-            match += 1
-        total += 1
 
-    return match / total
+class MultiChoiceFilter(Filter):
+    def apply(self, resps: Union[List, Iterable], docs: List[dict]) -> Iterable:
+        def extract_choice(resp):
+            """Attempts to extract multi-choice letter from the model's
+            response.
+            """
+            # Model response postprocessing from original main.py implementation
+            res = resp[0].split(ANS_KEYWORD)[-1].strip().split()[0]
+            # Response alignments from original eval.py implementation
+            res = res.strip()
+            if len(res) > 1:
+                if res[0] != "(":
+                    res = res[0]  # Assumes A) xxxx
+                else:
+                    res = res[1]  # Assumes (A) xxxx
+            return res
+
+        return map(extract_choice, resps)

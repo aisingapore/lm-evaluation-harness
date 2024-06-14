@@ -11,9 +11,16 @@ process_docs: !function m3exam_vi_utils.process_docs
 doc_to_text: "query"
 doc_to_target: "align_target"
 
+filter_list:
+  - name: "multi-choice-extract"
+    filter:
+      - function: !function m3exam_vi_utils.MultiChoiceFilter
+
 metric_list:
   - metric: acc
     aggregation: !function m3exam_vi_utils.mean
+    higher_is_better: true
+
 num_fewshot: 0
 output_type: generate_until
 generation_kwargs:
