@@ -20,8 +20,8 @@ metric_list:
    aggregation: mean
    higher_is_better: true
 filter_list:
-  - name: "regex" # get Maj@8 , via selecting the first 8 responses. Using a better estimator would be optimal.
+  - name: "regex"
     filter:
       - function: "regex"
-        # regex_pattern: (?:jawapan:\s*)?([ABCD])
+        # HACK: Allows the full response to be captured, passing logic to custom code
         regex_pattern: (?s)(.*)
