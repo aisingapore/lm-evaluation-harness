@@ -25,3 +25,4 @@ To replicate the results from the original source code, here are some steps nece
 3. `do_sample` for generation must be set to true. 
 4. It may be necessary to use first_n samples for zero-shot, however. 
 5. The results have been verified to be the same when done for 0 shot. 
+6. Translated MMLU is not included in the tasks due to lack of details
