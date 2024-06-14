@@ -4,11 +4,11 @@
 
 Title: `M3Exam: A Multilingual, Multimodal, Multilevel Benchmark for Examining Large Language Models`
 
-Abstract: `https://arxiv.org/abs/2210.09261`
+Abstract: https://arxiv.org/abs/2306.05179
 
 We introduce M3Exam, a novel benchmark sourced from real and official human exam questions for evaluating LLMs in a multilingual, multimodal, and multilevel context.
 
-Homepage: `https://github.com/DAMO-NLP-SG/M3Exam`
+Homepage: https://github.com/DAMO-NLP-SG/M3Exam
 
 
 ### Citation
@@ -32,7 +32,7 @@ Homepage: `https://github.com/DAMO-NLP-SG/M3Exam`
 
 #### Tasks
 
-* `m3exam_zeroshot_vi`: `Vietnamese subset with Vietnamese prompt, corresponds to the "Monolingual" strategy from Table 3.`
+* `m3exam_zeroshot_vi`: Vietnamese subset with Vietnamese prompt, corresponds to the "Monolingual" strategy from Table 3.
 
 ### Reproducibility
 
@@ -44,9 +44,9 @@ To reproduce the original implementation's results
 ### Checklist
 
 For adding novel benchmarks/datasets to the library:
-* [ ] Is the task an existing benchmark in the literature?
-  * [ ] Have you referenced the original paper that introduced the task?
-  * [ ] If yes, does the original paper provide a reference implementation? If so, have you checked against the reference implementation and documented how to run such a test?
+* [x] Is the task an existing benchmark in the literature?
+  * [x] Have you referenced the original paper that introduced the task?
+  * [x] If yes, does the original paper provide a reference implementation? If so, have you checked against the reference implementation and documented how to run such a test?
 
 
 If other tasks on this dataset are already supported:
