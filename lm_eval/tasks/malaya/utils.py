@@ -19,12 +19,13 @@ def most_common(l: List) -> str:
 def _process_wrapper(dataset: datasets.Dataset, num_fewshots: int):
     arange = set(range(len(dataset)))
 
-    def _process_doc(doc: dict) -> dict:
+    def _process_doc(doc: dict, idx: int) -> dict:
         prompts = []
         # curr idx
-        i = int(doc["no"]) - 1
         # sample N other indices
-        shots = random.sample(sorted(arange - {i}), num_fewshots)
+        shots = random.sample(sorted(arange - {idx}), num_fewshots)
+        #TODO: uncomment the below line to use first N indices instead of random
+        # shots = sorted(arange - {idx})[:num_fewshots]
         for no, s in enumerate(shots, start=1):
             prompts.append(
                 f"Contoh soalan {no}\n{doc_to_text(dataset[s])} {doc_to_target(dataset[s])}"
@@ -34,7 +35,7 @@ def _process_wrapper(dataset: datasets.Dataset, num_fewshots: int):
         prompt = "\n\n".join(prompts)
         return {"prompt": prompt}
 
-    return dataset.map(_process_doc)
+    return dataset.map(_process_doc, with_indices = True)
 
 
 def process_single_answer(r: str) -> str:
@@ -59,9 +60,7 @@ def process_results(doc: dict, results: List[List[str]]):
     to_save["lm_clean"] = r
     to_save["lm_answer"] = ans
 
-    # open('/mnt/fs-arf-01/wayne/results.json', 'w').close()
-    with open("/mnt/fs-arf-01/wayne/results.json", "a") as fopen:
-        fopen.write(json.dumps(to_save) + "\n")
+
     return result_dict
 
 
