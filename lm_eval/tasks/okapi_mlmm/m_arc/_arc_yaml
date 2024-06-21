@@ -1,0 +1,31 @@
+group:
+  - arc_mlmm
+dataset_path: aisingapore/m_arc
+dataset_name: null
+dataset_kwargs:
+  revision: dev
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+test_split: test
+
+process_docs: !function utils.process_docs
+doc_to_text: "query"
+doc_to_target: "gold"
+doc_to_choice: "choices"
+
+should_decontaminate: true
+doc_to_decontamination_query: "query"
+
+num_fewshot: 25
+
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+
+metadata:
+  version: 1.0
