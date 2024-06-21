@@ -1,0 +1,3 @@
+include: _hellaswag_yaml
+task: hellaswag_mlmm_ta
+dataset_name: hellaswag_ta

@@ -1,0 +1,5 @@
+include: _hellaswag_yaml
+task: hellaswag_mlmm_zh
+dataset_name: hellaswag_zh
+
+

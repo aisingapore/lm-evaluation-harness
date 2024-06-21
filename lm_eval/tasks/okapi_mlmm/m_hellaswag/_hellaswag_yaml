@@ -1,0 +1,31 @@
+group:
+  - hellaswag_mlmm
+dataset_path: aisingapore/m_hellaswag
+dataset_name: null
+dataset_kwargs:
+  revision: dev
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+test_split: null
+
+process_docs: !function utils.process_docs
+doc_to_text: "query"
+doc_to_target: "gold"
+doc_to_choice: "choices"
+
+should_decontaminate: true
+doc_to_decontamination_query: "query"
+
+num_fewshot: 0
+
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+
+metadata:
+  version: 1.0
