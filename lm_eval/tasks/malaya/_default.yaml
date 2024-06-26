@@ -1,0 +1,27 @@
+dataset_kwargs: null
+validation_split: null
+test_split: test
+doc_to_text: !function utils.doc_to_text
+doc_to_target: jawapan
+output_type: generate_until
+process_results: !function utils.process_results
+repeats: 5
+generation_kwargs:
+  max_new_tokens: 3
+  top_p: 0.95
+  top_k: 50
+  temperature: 0.5
+  do_sample: true
+  num_beams: 1
+  repetition_penalty: 1.05
+  max_length: null
+metric_list:
+ - metric: acc
+   aggregation: mean
+   higher_is_better: true
+filter_list:
+  - name: "regex"
+    filter:
+      - function: "regex"
+        # HACK: Allows the full response to be captured, passing logic to custom code
+        regex_pattern: (?s)(.*)
