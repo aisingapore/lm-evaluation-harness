@@ -258,8 +258,6 @@ class INDOMMLU(HFLM):
                         if padding_len_cont is not None
                         else contlen
                     )
-                # print(f"[LOGITS] {inp=}")
-                # print(f"[LOGITS] inp shape: {inp.shape}")
                 padding_len_inp = (
                     max(padding_len_inp, inplen)
                     if padding_len_inp is not None
@@ -267,8 +265,6 @@ class INDOMMLU(HFLM):
                 )
 
                 output_index = inp[1:].reshape(shape=(inplen-1,1))
-                print(f"[LOGITS] {output_index=}")
-                print(f"[LOGITS] output_index shape: {output_index.shape}")
                 output_index_lst.append(output_index)
 
                 inps.append(inp)  # [1, inp_length]
@@ -297,16 +293,10 @@ class INDOMMLU(HFLM):
                     "labels": batched_conts,
                 }
 
-            print(f"[LOGITS] {batched_inps=}")
-            print(f"[LOGITS] batched_inps shape: {batched_inps.shape}")
             outputs = self._model_call(batched_inps, **call_kwargs)
-            print(f"[LOGITS] {outputs=}")
-            print(f"[LOGITS] outputs shape: {outputs.shape}")
             multi_logits = F.log_softmax(
                 self._model_call(batched_inps, **call_kwargs), dim=-1
             )  # [batch, padding_length (inp or cont), vocab]
-            # print(f"[LOGITS] {multi_logits=}")
-            # print(f"[LOGITS] Multi Logits Shape: {multi_logits.shape}")
 
             for (cache_key, _, _), logits, inplen, cont_toks, output_index in zip(
                 chunk, multi_logits, inplens, cont_toks_list, output_index_lst
@@ -334,15 +324,9 @@ class INDOMMLU(HFLM):
 
                 # Obtain log-probs at the corresponding continuation token indices
                 # last_token_slice = logits[:, -1, :].squeeze(0).tolist()
-                # print("[Before Torch Gather....]")
-                # print(f"[LOGITS] Logits Shape: {logits.shape}")
-                # print(f"[LOGITS] output_index Shape: {output_index.shape}")
                 logits = torch.gather(logits, -1, output_index)
-                print(f"[LOGITS] {logits=}")
-                print(f"[LOGITS] Logits Shape: {logits.shape}")
                 # Answer: (log prob, is-exact-match)
                 answer = (float(logits.mean()), bool(max_equal))
-                print(f"[Answer] {answer}")
                 res.append(answer)
 
                 self.cache_hook.add_partial("loglikelihood", cache_key, answer)
