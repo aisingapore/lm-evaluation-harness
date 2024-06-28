@@ -1,4 +1,5 @@
 import datasets
+import numpy as np
 
 def indommlu_doc_to_target(doc):
     processed_options = list(map(lambda x: x[0], doc["options"]))
@@ -34,11 +35,7 @@ def _process_results(doc, results):
     pred = np.argmax(lls)
     pred_norm = np.argmax(lls / completion_len)
 
-    if self.multiple_input:
-        gold = doc["doc_to_text"]
-    else:
-        gold = doc["doc_to_target"]
-
+    gold = doc["doc_to_target"]
     gold_index_error = False
     if isinstance(gold, list):
         gold = [i if i < len(choices) else -100 for i in gold]
@@ -59,15 +56,10 @@ def _process_results(doc, results):
             f"Sample:\n\n{doc}\n\n"
         )
 
-    if self.multiple_target:
-        acc = 1.0 if pred in gold else 0.0
-        acc_norm = 1.0 if pred_norm in gold else 0.0
-        exact_match = int(any([is_greedy[i] if i != -100 else 0 for i in gold]))
-    else:
-        acc = 1.0 if pred == gold else 0.0
-        acc_norm = 1.0 if pred_norm == gold else 0.0
-        # TODO: this gets score of 0 on arc_challenge for pythia-70m. need to test that this works properly
-        exact_match = int(is_greedy[gold]) if gold != -100 else 0
+    acc = 1.0 if pred == gold else 0.0
+    acc_norm = 1.0 if pred_norm == gold else 0.0
+    # TODO: this gets score of 0 on arc_challenge for pythia-70m. need to test that this works properly
+    exact_match = int(is_greedy[gold]) if gold != -100 else 0
 
     acc *= doc["to_compile"]
     acc_norm *= doc["to_compile"]
