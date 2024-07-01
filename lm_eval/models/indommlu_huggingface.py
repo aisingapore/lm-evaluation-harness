@@ -1,14 +1,17 @@
-from lm_eval.models.huggingface import HFLM
-from lm_eval.api.registry import register_model
+import os
 from typing import List, Literal, Optional, Tuple, Union
+
 import torch
 import torch.nn.functional as F
 import transformers
 from tqdm import tqdm
+
 from lm_eval import utils
-from lm_eval.utils import Collator
 from lm_eval.api.instance import Instance
-import os
+from lm_eval.api.registry import register_model
+from lm_eval.models.huggingface import HFLM
+from lm_eval.utils import Collator
+
 
 @register_model("indommlu", "IndoMMLU")
 class INDOMMLU(HFLM):
