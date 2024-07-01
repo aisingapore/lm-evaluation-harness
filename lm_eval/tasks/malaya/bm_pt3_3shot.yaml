@@ -1,0 +1,6 @@
+include: _bm_pt3_yaml
+task: malaya_bm_pt3_3shot
+
+process_docs: !function utils.process_docs_3shot
+doc_to_text: "query"
+doc_to_target: "target"

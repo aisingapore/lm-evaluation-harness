@@ -1,0 +1,6 @@
+include: _tatabahasa_yaml
+task: malaya_tatabahasa_0shot
+
+process_docs: !function utils.process_docs
+doc_to_text: "query"
+doc_to_target: "target"
