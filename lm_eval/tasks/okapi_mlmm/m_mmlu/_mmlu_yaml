@@ -4,6 +4,7 @@ dataset_path: aisingapore/m_mmlu
 dataset_name: null
 dataset_kwargs:
   revision: dev
+  trust_remote_code: true
 output_type: multiple_choice
 training_split: null
 validation_split: null
