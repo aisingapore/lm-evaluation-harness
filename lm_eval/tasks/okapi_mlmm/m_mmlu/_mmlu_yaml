@@ -1,0 +1,35 @@
+group:
+  - mmlu_mlmm
+dataset_path: aisingapore/m_mmlu
+dataset_name: null
+dataset_kwargs:
+  revision: dev
+  trust_remote_code: true
+output_type: multiple_choice
+training_split: null
+validation_split: null
+test_split: test
+fewshot_split: dev
+
+process_docs: !function utils.process_docs
+doc_to_text: "query"
+doc_to_target: "gold"
+doc_to_choice: "choices"
+
+should_decontaminate: true
+doc_to_decontamination_query: "query"
+
+num_fewshot: 25
+fewshot_config:
+  sampler: n_plus_one
+
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+
+metadata:
+  version: 1.0

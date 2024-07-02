@@ -1,0 +1,3 @@
+include: _mmlu_yaml
+task: mmlu_mlmm_zh
+dataset_name: mmlu_zh
