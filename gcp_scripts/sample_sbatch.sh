@@ -8,10 +8,10 @@ set -euo pipefail
 # LM_EVAL_OUTPUT_DIR: Output directory to store the evaluation results.
 #                     Should be unique to each checkpoint/evaluation run.
 
-lm_eval_model_path='/mnt/fs-arf-01/gcp2_cache/gcp_user/checkpoints/gemma-2-9b-unique-name'
+lm_eval_model_path='/mnt/fs-arf-01/eval/models/a_meta_llama_3_ckpt'
 lm_eval_model_dtype='bfloat16'
 model_name=$(basename "${lm_eval_model_path}")
-lm_eval_output_dir="/mnt/fs-arf-01/gcp2_cache/gcp_user/lm_evaluation_harness_results/${model_name}"
+lm_eval_output_dir="/mnt/fs-arf-01/eval/results/eval_english/${model_name}"
 sbatch \
 	--export=ALL,LM_EVAL_MODEL_PATH=${lm_eval_model_path},LM_EVAL_MODEL_DTYPE=${lm_eval_model_dtype},LM_EVAL_OUTPUT_DIR=${lm_eval_output_dir} \
 	launch.slurm

@@ -4,7 +4,7 @@ set -euo pipefail
 
 bucket_name=${1:-'s3://checkpoint-ohio-test/hf_checkpoints'}
 ckpt_name=${2:-'gemma-2-9b-unique-name'}
-output_dir=${3:-'/mnt/fs-arf-01/gcp2_cache/gcp_user/checkpoints'}
+output_dir=${3:-'/mnt/fs-arf-01/eval/models'}
 
 src="${bucket_name}/${ckpt_name}"
 dst="${output_dir}/${ckpt_name}"
