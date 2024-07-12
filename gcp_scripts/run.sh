@@ -5,13 +5,13 @@ set -euo pipefail
 task_idx=${1:--1}
 
 export SHARED_FS_DIR=/mnt/fs-arf-01
-export MY_CACHE_DIR="${SHARED_FS_DIR}/gcp2_cache/gcp_user"
+export MY_CACHE_DIR="${SHARED_FS_DIR}/gcp5_cache/ob1"
 export HF_HOME="${MY_CACHE_DIR}/huggingface"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"
 export PIP_CACHE_DIR="${MY_CACHE_DIR}/pip"
 export CONDA_PKGS_DIRS="${MY_CACHE_DIR}/conda_pkgs"
 
-. "${HOME}/hf_token"
+# . "${HOME}/hf_token"
 . /opt/conda/etc/profile.d/conda.sh
 conda activate "${SHARED_FS_DIR}/envs/lm-evaluation-harness"
 
@@ -37,9 +37,9 @@ else
 	tasks_str=${tasks[${task_idx}]}
 fi
 model_args=(
-	"pretrained=${LM_EVAL_MODEL_PATH}"
+	"pretrained=/home/ob1/eval/s3_sync/90-10-5e7/ba763"
 	"parallelize=False"
-	"dtype=${LM_EVAL_MODEL_DTYPE}"
+	"dtype=bfloat16"
 )
 model_args_str=$(IFS=,; echo "${model_args[*]}")
 printf "INFO: Evaluating %s on tasks %s\n" "${model_args_str}" "${tasks_str}"
@@ -49,4 +49,4 @@ time accelerate launch -m lm_eval \
 	--tasks="${tasks_str}" \
 	--batch_size=auto \
 	--max_batch_size=16 \
-	--output_path="${LM_EVAL_OUTPUT_DIR}"
+	--output_path="/home/ob1/eval/english_results"
