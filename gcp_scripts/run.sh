@@ -37,7 +37,7 @@ else
 	tasks_str=${tasks[${task_idx}]}
 fi
 model_args=(
-	"pretrained=/home/ob1/eval/s3_sync/90-10-5e7/ba763"
+	"pretrained=/home/ob1/eval/s3_sync/90-10-5e7/ba1526"
 	"parallelize=False"
 	"dtype=bfloat16"
 )
