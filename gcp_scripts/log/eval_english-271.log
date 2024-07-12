@@ -1,0 +1,81 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Model path=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba1000
+INFO: Model dtype=bfloat16
+INFO: Ouput dir=/mnt/fs-arf-01/eval/results/eval_english
+/usr/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Evaluating pretrained=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba1000,parallelize=False,dtype=bfloat16 on tasks leaderboard_bbh,leaderboard_arc_challenge,leaderboard_gsm8k,aisg_internal_hellaswag,mmlu
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `1`
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+2024-07-11:10:12:59,315 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-11:10:13:13,376 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-11:10:13:13,392 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-11:10:13:13,392 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba1000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-11:10:13:14,211 INFO     [huggingface.py:170] Using device 'cuda'
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:13<00:39, 13.06s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:17<00:16,  8.22s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:24<00:07,  7.54s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:26<00:00,  5.11s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:26<00:00,  6.50s/it]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 454, in <module>
+    cli_evaluate()
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 375, in cli_evaluate
+    results = evaluator.simple_evaluate(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/evaluator.py", line 221, in simple_evaluate
+    task_dict = get_task_dict(tasks, task_manager)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+    task_name_from_string_dict = task_manager.load_task_or_group(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+    collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 178, in _load_individual_task_or_group
+    return load_task(task_config, task=name_or_config, group=parent_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 167, in load_task
+    task_object = ConfigurableTask(config=config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 810, in __init__
+    self.download(self.config.dataset_kwargs)
+  File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 917, in download
+    self.dataset = datasets.load_dataset(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2594, in load_dataset
+    builder_instance = load_dataset_builder(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2301, in load_dataset_builder
+    builder_cls = get_dataset_builder_class(dataset_module, dataset_name=dataset_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 249, in get_dataset_builder_class
+    with lock_importable_file(
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 376, in __enter__
+    self.acquire()
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_unix.py", line 42, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/mnt/fs-arf-01/gcp2_cache/gcp_user/huggingface/modules/datasets_modules/datasets/hellaswag.lock'
+Traceback (most recent call last):
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    simple_launcher(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 703, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/mnt/fs-arf-01/envs/lm-evaluation-harness/bin/python', '-m', 'lm_eval', '--model_args=pretrained=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba1000,parallelize=False,dtype=bfloat16', '--tasks=leaderboard_bbh,leaderboard_arc_challenge,leaderboard_gsm8k,aisg_internal_hellaswag,mmlu', '--batch_size=auto', '--max_batch_size=16', '--output_path=/mnt/fs-arf-01/eval/results/eval_english']' returned non-zero exit status 1.
+
+real	2m24.825s
+user	0m22.544s
+sys	0m15.928s
+srun: error: localhost: task 0: Exited with exit code 1

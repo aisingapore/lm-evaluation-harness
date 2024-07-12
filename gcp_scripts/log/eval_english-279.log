@@ -1,0 +1,33 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Model path=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba5000
+INFO: Model dtype=bfloat16
+INFO: Ouput dir=/mnt/fs-arf-01/eval/results/eval_english
+/usr/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Evaluating pretrained=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba5000,parallelize=False,dtype=bfloat16 on tasks leaderboard_bbh,leaderboard_arc_challenge,leaderboard_gsm8k,aisg_internal_hellaswag,mmlu
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `2`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+Traceback (most recent call last):
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1088, in launch_command
+    multi_gpu_launcher(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 711, in multi_gpu_launcher
+    current_env = prepare_multi_gpu_env(args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/utils/launch.py", line 181, in prepare_multi_gpu_env
+    raise ConnectionError(
+ConnectionError: Tried to launch distributed communication on port `29500`, but another process is utilizing it. Please specify a different port (such as using the `--main_process_port` flag or specifying a different `main_process_port` in your config file) and rerun your script. To automatically use the next open port (on a single node), you can set this to `0`.
+
+real	0m18.689s
+user	0m3.904s
+sys	0m8.029s
+srun: error: localhost: task 0: Exited with exit code 1

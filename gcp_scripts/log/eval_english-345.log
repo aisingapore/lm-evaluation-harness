@@ -1,0 +1,138 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Model path=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000
+INFO: Model dtype=bfloat16
+INFO: Ouput dir=/mnt/fs-arf-01/eval/results/eval_english
+/usr/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Evaluating pretrained=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000,parallelize=False,dtype=bfloat16 on tasks leaderboard_bbh,leaderboard_arc_challenge,leaderboard_gsm8k,aisg_internal_hellaswag,mmlu
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `8`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+2024-07-12:00:58:53,563 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,563 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,563 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,563 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,600 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,621 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,721 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:58:53,984 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-12:00:59:03,911 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,914 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,915 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,921 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,921 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,923 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,923 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:03,924 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,924 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:03,924 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,924 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:03,931 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,931 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:03,931 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,931 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:03,958 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:03,973 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:03,973 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:04,069 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:04,081 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:04,081 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-12:00:59:04,469 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-12:00:59:04,478 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-12:00:59:04,478 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000', 'parallelize': False, 'dtype': 'bfloat16'}
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/transformers/utils/hub.py", line 402, in cached_file
+[rank0]:     resolved_file = hf_hub_download(
+[rank0]:                     ^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank0]:     validate_repo_id(arg_value)
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank0]:     raise HFValidationError(
+[rank0]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000'. Use `repo_type` argument if needed.
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 454, in <module>
+[rank0]:     cli_evaluate()
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank0]:     results = evaluator.simple_evaluate(
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/evaluator.py", line 192, in simple_evaluate
+[rank0]:     lm = lm_eval.api.registry.get_model(model).create_from_arg_string(
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/model.py", line 148, in create_from_arg_string
+[rank0]:     return cls(**args, **args2)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/models/huggingface.py", line 196, in __init__
+[rank0]:     self._get_config(
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/models/huggingface.py", line 469, in _get_config
+[rank0]:     self._config = transformers.AutoConfig.from_pretrained(
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/transformers/models/auto/configuration_auto.py", line 965, in from_pretrained
+[rank0]:     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/transformers/configuration_utils.py", line 632, in get_config_dict
+[rank0]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/transformers/configuration_utils.py", line 689, in _get_config_dict
+[rank0]:     resolved_config_file = cached_file(
+[rank0]:                            ^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/transformers/utils/hub.py", line 466, in cached_file
+[rank0]:     raise EnvironmentError(
+[rank0]: OSError: Incorrect path_or_model_id: '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/61-llama3-4node-replay10/ep0-ba4000'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+W0712 00:59:05.957000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99368 closing signal SIGTERM
+W0712 00:59:05.958000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99369 closing signal SIGTERM
+W0712 00:59:05.958000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99370 closing signal SIGTERM
+W0712 00:59:05.958000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99371 closing signal SIGTERM
+W0712 00:59:05.958000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99372 closing signal SIGTERM
+W0712 00:59:05.959000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99373 closing signal SIGTERM
+W0712 00:59:05.959000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 99374 closing signal SIGTERM
+E0712 00:59:07.133000 140049488156480 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 99367) of binary: /mnt/fs-arf-01/envs/lm-evaluation-harness/bin/python
+Traceback (most recent call last):
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1088, in launch_command
+    multi_gpu_launcher(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 733, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+lm_eval FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-07-12_00:59:05
+  host      : vm-a100-2.c.ai-products.internal
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 99367)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+real	0m37.465s
+user	1m34.464s
+sys	0m30.390s
+srun: error: localhost: task 0: Exited with exit code 1

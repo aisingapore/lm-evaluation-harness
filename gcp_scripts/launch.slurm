@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=eval_english
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=48
-#SBATCH --gres=gpu:4
-#SBATCH --mem=320G
+#SBATCH --cpus-per-task=24
+#SBATCH --gres=gpu:2
+#SBATCH --mem=160G
 #SBATCH --time=1440:00:00
 #SBATCH --output=log/%x-%j.log
 

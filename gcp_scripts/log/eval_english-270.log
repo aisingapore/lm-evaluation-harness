@@ -1,0 +1,159 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Model path=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba500
+INFO: Model dtype=bfloat16
+INFO: Ouput dir=/mnt/fs-arf-01/eval/results/eval_english
+/usr/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Evaluating pretrained=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba500,parallelize=False,dtype=bfloat16 on tasks leaderboard_bbh,leaderboard_arc_challenge,leaderboard_gsm8k,aisg_internal_hellaswag,mmlu
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `2`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+2024-07-11:10:12:59,307 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-11:10:12:59,309 INFO     [__main__.py:272] Verbosity set to INFO
+2024-07-11:10:13:13,376 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-11:10:13:13,376 INFO     [__main__.py:369] Selected Tasks: ['aisg_internal_hellaswag', 'leaderboard_arc_challenge', 'leaderboard_bbh', 'leaderboard_gsm8k', 'mmlu']
+2024-07-11:10:13:13,392 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-11:10:13:13,392 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-07-11:10:13:13,392 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba500', 'parallelize': False, 'dtype': 'bfloat16'}
+2024-07-11:10:13:13,392 INFO     [evaluator.py:189] Initializing hf model, with arguments: {'pretrained': '/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba500', 'parallelize': False, 'dtype': 'bfloat16'}
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:10<00:31, 10.60s/it]Loading checkpoint shards:  25%|██▌       | 1/4 [00:12<00:36, 12.19s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:15<00:14,  7.27s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:16<00:15,  7.76s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:23<00:07,  7.32s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:22<00:07,  7.06s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:24<00:00,  4.75s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  4.59s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:24<00:00,  6.11s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  5.79s/it]
+2024-07-11:10:13:39,907 INFO     [huggingface.py:322] Using 2 devices with data parallelism
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 454, in <module>
+[rank0]:     cli_evaluate()
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank0]:     results = evaluator.simple_evaluate(
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/evaluator.py", line 221, in simple_evaluate
+[rank0]:     task_dict = get_task_dict(tasks, task_manager)
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+[rank0]:     task_name_from_string_dict = task_manager.load_task_or_group(
+[rank0]:                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+[rank0]:     collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 178, in _load_individual_task_or_group
+[rank0]:     return load_task(task_config, task=name_or_config, group=parent_name)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 167, in load_task
+[rank0]:     task_object = ConfigurableTask(config=config)
+[rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 810, in __init__
+[rank0]:     self.download(self.config.dataset_kwargs)
+[rank0]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 917, in download
+[rank0]:     self.dataset = datasets.load_dataset(
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2594, in load_dataset
+[rank0]:     builder_instance = load_dataset_builder(
+[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2301, in load_dataset_builder
+[rank0]:     builder_cls = get_dataset_builder_class(dataset_module, dataset_name=dataset_name)
+[rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 249, in get_dataset_builder_class
+[rank0]:     with lock_importable_file(
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 376, in __enter__
+[rank0]:     self.acquire()
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 332, in acquire
+[rank0]:     self._acquire()
+[rank0]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_unix.py", line 42, in _acquire
+[rank0]:     fd = os.open(self.lock_file, open_flags, self._context.mode)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: PermissionError: [Errno 13] Permission denied: '/mnt/fs-arf-01/gcp2_cache/gcp_user/huggingface/modules/datasets_modules/datasets/hellaswag.lock'
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank1]:   File "<frozen runpy>", line 88, in _run_code
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 454, in <module>
+[rank1]:     cli_evaluate()
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank1]:     results = evaluator.simple_evaluate(
+[rank1]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/utils.py", line 395, in _wrapper
+[rank1]:     return fn(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/evaluator.py", line 221, in simple_evaluate
+[rank1]:     task_dict = get_task_dict(tasks, task_manager)
+[rank1]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+[rank1]:     task_name_from_string_dict = task_manager.load_task_or_group(
+[rank1]:                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+[rank1]:     collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 178, in _load_individual_task_or_group
+[rank1]:     return load_task(task_config, task=name_or_config, group=parent_name)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/tasks/__init__.py", line 167, in load_task
+[rank1]:     task_object = ConfigurableTask(config=config)
+[rank1]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 810, in __init__
+[rank1]:     self.download(self.config.dataset_kwargs)
+[rank1]:   File "/mnt/fs-arf-01/gcp_user/lm-evaluation-harness/lm_eval/api/task.py", line 917, in download
+[rank1]:     self.dataset = datasets.load_dataset(
+[rank1]:                    ^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2594, in load_dataset
+[rank1]:     builder_instance = load_dataset_builder(
+[rank1]:                        ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 2301, in load_dataset_builder
+[rank1]:     builder_cls = get_dataset_builder_class(dataset_module, dataset_name=dataset_name)
+[rank1]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/datasets/load.py", line 249, in get_dataset_builder_class
+[rank1]:     with lock_importable_file(
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 376, in __enter__
+[rank1]:     self.acquire()
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_api.py", line 332, in acquire
+[rank1]:     self._acquire()
+[rank1]:   File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/filelock/_unix.py", line 42, in _acquire
+[rank1]:     fd = os.open(self.lock_file, open_flags, self._context.mode)
+[rank1]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: PermissionError: [Errno 13] Permission denied: '/mnt/fs-arf-01/gcp2_cache/gcp_user/huggingface/modules/datasets_modules/datasets/hellaswag.lock'
+W0711 10:13:46.646000 140298510825280 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 192009 closing signal SIGTERM
+E0711 10:13:47.011000 140298510825280 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 192008) of binary: /mnt/fs-arf-01/envs/lm-evaluation-harness/bin/python
+Traceback (most recent call last):
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1088, in launch_command
+    multi_gpu_launcher(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/accelerate/commands/launch.py", line 733, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/fs-arf-01/envs/lm-evaluation-harness/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+lm_eval FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-07-11_10:13:46
+  host      : vm-a100-2.c.ai-products.internal
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 192008)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+real	2m23.467s
+user	0m39.599s
+sys	0m23.300s
+srun: error: localhost: task 0: Exited with exit code 1

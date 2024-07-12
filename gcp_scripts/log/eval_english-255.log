@@ -1,0 +1,2 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/var/spool/slurmd/job00255/slurm_script: line 30: unexpected EOF while looking for matching `}'

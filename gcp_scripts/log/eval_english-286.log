@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+INFO: Model path=/mnt/fs-arf-01/cpt_checkpoints/hf_checkpoints/63-llama3-4node-replay40/ep0-ba3000
+INFO: Model dtype=bfloat16
+INFO: Ouput dir=/mnt/fs-arf-01/eval/results/eval_english
+/usr/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+mkdir: cannot create directory '/mnt/fs-arf-01/gcp2_cache/raymond': Permission denied
+srun: error: localhost: task 0: Exited with exit code 1
